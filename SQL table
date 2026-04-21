@@ -1,0 +1,50 @@
+create table matchs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    equipe_domicile int,
+    equipe_exterieur int,
+    stade int,
+    categorie_match int,
+    date_match Datetime );
+
+create table categorie_match (
+    id int auto_increment Primary key,
+    types_categorie enum ('amical', 'championat'));
+
+create table equipe (
+    id int auto_increment Primary key,
+    Nom_equipe varchar (100),
+    sigle_equipe varchar (5),
+    ville varchar (100));
+
+create table championat (
+    id int auto_increment Primary_key,
+    nom_championat varchar (100),
+    division int );
+
+create table division (
+    id int auto_increment Primary Key,
+    nom_division varchar (100) );
+    
+create table stade (
+    id int auto_increment Primary key,
+    nom_stade varchar (100),
+    capacite int,
+    capacite_place_VIP int,
+    adresse varchar (100) );
+    
+create table utilisateurs (
+    id int auto_increment Primary key ,
+    nom varchar (30),
+    telephone varchar (20) unique,
+    password varchar (100),
+    role enum ('client', 'admin', 'controleur ') );
+
+create table billets (
+    id int auto_increment Primary key,
+    iduser int, 
+    idmatch int,
+    idCategorie int, 
+    idPaiement int,
+    codeQR varchar (255),
+    estValide BOOLEN default true );
+    
